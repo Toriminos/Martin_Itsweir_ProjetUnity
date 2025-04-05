@@ -1,0 +1,129 @@
+using System;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
+using Unity.VisualScripting;
+using System.Collections.Generic;
+using UnityEngine.PlayerLoop;
+
+
+[RequireComponent(typeof(RectTransform))]
+public class KnobDragWidget : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+{
+    [Serializable]
+    public class KnobDragEvent : UnityEvent<float>
+    {
+    }
+
+    [SerializeField]
+    private KnobDragEvent m_OnValueChanged = new KnobDragEvent();
+
+    [SerializeField]
+    private float minValue;
+
+    [SerializeField]
+    private float maxValue = 1f;
+
+    [SerializeField]
+    protected float m_Value;
+
+    [SerializeField]
+    private bool WholeNumbers;
+
+    [SerializeField]
+    private float magnitudeMultiplier = 0.1f;
+
+    [SerializeField]
+    private float visualMultiplier = 0.1f;
+
+    private Vector2 positionBeginDrag;
+    private RectTransform rectTransform;
+    private bool enableAction = false;
+    private float valueToAdd = 0f;
+
+    public KnobDragEvent OnValueChanged
+    {
+        get
+        {
+            return m_OnValueChanged;
+        }
+        set
+        {
+            m_OnValueChanged = value;
+        }
+    }
+
+    private void Start(){
+        if(maxValue < minValue){
+            maxValue = 1f;
+            minValue = 0f;
+        }
+        rectTransform = GetComponent<RectTransform>();
+        positionBeginDrag = new Vector2(0, 0);
+        m_Value = ClampValue(m_Value);
+    }
+
+    public void FixedUpdate(){
+        if(enableAction){
+            Set(m_Value + valueToAdd);
+        }
+    }
+    
+    protected virtual void Set(float input, bool sendCallback = true)
+    {
+        float num = ClampValue(input);
+        if (m_Value != num)
+        {
+            m_Value = num;
+            UpdateVisuals();
+            if (sendCallback)
+            {
+                //UISystemProfilerApi.AddMarker("Slider.value", this);
+                m_OnValueChanged.Invoke(num);
+            }
+        }
+    }
+
+    private void UpdateVisuals()
+    {
+        rectTransform.transform.rotation = Quaternion.Euler(0, 0, rectTransform.eulerAngles.z - (valueToAdd * visualMultiplier));
+    }
+
+    private float ClampValue(float input)
+    {
+        float num = Mathf.Clamp(input, minValue, maxValue);
+        if (WholeNumbers)
+        {
+            num = Mathf.Round(num);
+        }
+
+        return num;
+    }
+
+    public float getValue(){
+        return m_Value;
+    }
+
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        positionBeginDrag = eventData.position;
+        enableAction = true;
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        Vector2 directionVecteur = eventData.position - positionBeginDrag;
+        if (directionVecteur.x < 0)
+            valueToAdd = -(directionVecteur.magnitude * magnitudeMultiplier);
+        else
+            valueToAdd = directionVecteur.magnitude * magnitudeMultiplier;
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        valueToAdd = 0f;
+        enableAction = false;
+        positionBeginDrag = new Vector2(0, 0);
+    }
+}
