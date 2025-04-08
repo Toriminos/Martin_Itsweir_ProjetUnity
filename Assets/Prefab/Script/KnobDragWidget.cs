@@ -17,25 +17,13 @@ public class KnobDragWidget : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     }
 
     [SerializeField]
-    private KnobDragEvent m_OnValueChanged = new KnobDragEvent();
-
-    [SerializeField]
-    private float minValue;
-
-    [SerializeField]
-    private float maxValue = 1f;
-
-    [SerializeField]
-    protected float m_Value;
-
-    [SerializeField]
-    private bool WholeNumbers;
-
-    [SerializeField]
-    private float magnitudeMultiplier = 0.1f;
-
-    [SerializeField]
-    private float visualMultiplier = 0.1f;
+    public KnobDragEvent m_OnValueChanged = new KnobDragEvent();
+    public float minValue;
+    public float maxValue = 1f;
+    public float m_Value;
+    public bool WholeNumbers;
+    public float magnitudeMultiplier = 0.1f;
+    public float visualMultiplier = 0.1f;
 
     private Vector2 positionBeginDrag;
     private RectTransform rectTransform;
@@ -79,7 +67,6 @@ public class KnobDragWidget : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
             UpdateVisuals();
             if (sendCallback)
             {
-                //UISystemProfilerApi.AddMarker("Slider.value", this);
                 m_OnValueChanged.Invoke(num);
             }
         }
@@ -97,7 +84,6 @@ public class KnobDragWidget : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         {
             num = Mathf.Round(num);
         }
-
         return num;
     }
 
