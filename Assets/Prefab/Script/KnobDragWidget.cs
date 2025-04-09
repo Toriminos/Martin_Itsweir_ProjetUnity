@@ -18,17 +18,28 @@ public class KnobDragWidget : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     [SerializeField]
     public KnobDragEvent m_OnValueChanged = new KnobDragEvent();
+
+    [Header("Value")]
     public float minValue;
     public float maxValue = 1f;
     public float m_Value;
     public bool WholeNumbers;
+
+    [Header("Multiplier")]
     public float magnitudeMultiplier = 0.1f;
     public float visualMultiplier = 0.1f;
+
+    [Header("Spring")]
+    public bool springBack = false;
+    public float springBackSpeed = 5f;
+    public float springSnap =  0.01f;
 
     private Vector2 positionBeginDrag;
     private RectTransform rectTransform;
     private bool enableAction = false;
     private float valueToAdd = 0f;
+    private float initialValue;
+    private bool isSpringingBack = false;
 
     public KnobDragEvent OnValueChanged
     {
@@ -50,11 +61,23 @@ public class KnobDragWidget : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         rectTransform = GetComponent<RectTransform>();
         positionBeginDrag = new Vector2(0, 0);
         m_Value = ClampValue(m_Value);
+        initialValue = m_Value;
     }
 
     public void FixedUpdate(){
         if(enableAction){
             Set(m_Value + valueToAdd);
+        }
+        else if (springBack && isSpringingBack)
+        {
+            float toMinus = Mathf.Lerp(m_Value, initialValue, Time.fixedDeltaTime * springBackSpeed);
+            valueToAdd = toMinus - m_Value;
+            Set(toMinus);
+            if (Mathf.Abs(m_Value + initialValue) < 0.01f)
+            {
+                m_Value = initialValue;
+                isSpringingBack = false;
+            }
         }
     }
     
@@ -95,6 +118,7 @@ public class KnobDragWidget : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     {
         positionBeginDrag = eventData.position;
         enableAction = true;
+        isSpringingBack = false;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -111,5 +135,10 @@ public class KnobDragWidget : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         valueToAdd = 0f;
         enableAction = false;
         positionBeginDrag = new Vector2(0, 0);
+        
+        if (springBack)
+        {
+            isSpringingBack = true;
+        }
     }
 }

@@ -97,3 +97,5 @@ MonoBehaviour:
   WholeNumbers: 0
   magnitudeMultiplier: 0.001
   visualMultiplier: 1.5
+  springBack: 0
+  springBackSpeed: 5
