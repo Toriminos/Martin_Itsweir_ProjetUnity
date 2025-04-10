@@ -17,7 +17,6 @@ public class VolumeControlGeneral : MonoBehaviour
     void Start()
     {
         text.text = slider.value.ToString();
-        //VCs = new List<VolumeControl>();
     }
 
     // Update is called once per frame
@@ -39,7 +38,7 @@ public class VolumeControlGeneral : MonoBehaviour
             float minValue = Mathf.Min(value, VC.slider.value);
             VC.maxValueGeneral = value;
             VC.slider.value = minValue;
-            VC.source.volume = minValue;
+            VC.source.volume = minValue / 100f;
         }
     }
 

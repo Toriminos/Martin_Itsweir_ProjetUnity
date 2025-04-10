@@ -67,7 +67,7 @@ public class VolumeControl : MonoBehaviour
 
             if (source != null)
             {
-                source.volume = savedVolume;
+                source.volume = savedVolume / 100f;
             }
         }
     }
@@ -93,7 +93,7 @@ public class VolumeControl : MonoBehaviour
 
         if (source != null)
         {
-            source.volume = savedVolume;
+            source.volume = savedVolume / 100f;
         }
     }
 }
