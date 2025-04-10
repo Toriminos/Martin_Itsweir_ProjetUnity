@@ -12,9 +12,7 @@ using UnityEngine.PlayerLoop;
 public class KnobDragWidget : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [Serializable]
-    public class KnobDragEvent : UnityEvent<float>
-    {
-    }
+    public class KnobDragEvent : UnityEvent<float>{}
 
     [SerializeField]
     public KnobDragEvent m_OnValueChanged = new KnobDragEvent();
