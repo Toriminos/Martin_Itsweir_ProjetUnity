@@ -19,12 +19,6 @@ public class VolumeControlGeneral : MonoBehaviour
         text.text = slider.value.ToString();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void AddVC(VolumeControl vc)
     {
         VCs.Add(vc);

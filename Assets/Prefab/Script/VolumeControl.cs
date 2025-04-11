@@ -17,19 +17,13 @@ public class VolumeControl : MonoBehaviour
     void Start()
     {
         text.text = slider.value.ToString();
-        maxValueGeneral = 50;
-        slider.value = 50;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        slider.value = maxValueGeneral;
     }
 
     public void SetSource(AudioSource AS)
     {
         source = AS;
+        source.volume = slider.value / 100.0f;
     }
 
     public void DisplayVolume(Single value)

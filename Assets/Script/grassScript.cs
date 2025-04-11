@@ -5,6 +5,8 @@ using UnityEngine;
 public class grassScript : MonoBehaviour
 {
     public float grassSpeed;
+    public float minSpeed;
+    public float maxSpeed;
     public List<GameObject> grass;
 
     private void Start() {
@@ -26,5 +28,9 @@ public class grassScript : MonoBehaviour
         {
             other.transform.position += new Vector3(0, 0, gameObject.transform.localScale.z);
         }
+    }
+
+    public void SetClampSpeed(float mult){
+        grassSpeed = Mathf.Lerp(minSpeed, maxSpeed, mult);
     }
 }

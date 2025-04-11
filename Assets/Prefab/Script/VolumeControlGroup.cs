@@ -7,9 +7,10 @@ public class VolumeControlGroup : MonoBehaviour
     public List<AudioSource> sources;
     public GameObject volumeControlGeneralPrefab;
     public GameObject volumeControlPrefab;
+    public float volumeAtStart;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         if (sources == null || sources.Count == 0)
         {
@@ -26,11 +27,7 @@ public class VolumeControlGroup : MonoBehaviour
             vc.SetSource(source);
             vcGeneral.AddVC(vc);
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        vcGeneral.slider.value = volumeAtStart;
+        vcGeneral.DisplayVolume(volumeAtStart);
     }
 }

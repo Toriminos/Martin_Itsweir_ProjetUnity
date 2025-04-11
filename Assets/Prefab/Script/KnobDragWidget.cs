@@ -33,6 +33,7 @@ public class KnobDragWidget : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     public float springSnap =  0.01f;
 
     private Vector2 positionBeginDrag;
+    private Vector3 rotationStart;
     private RectTransform rectTransform;
     private bool enableAction = false;
     private float valueToAdd = 0f;
@@ -57,6 +58,7 @@ public class KnobDragWidget : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
             minValue = 0f;
         }
         rectTransform = GetComponent<RectTransform>();
+        rotationStart = rectTransform.eulerAngles;
         positionBeginDrag = new Vector2(0, 0);
         m_Value = ClampValue(m_Value);
         initialValue = m_Value;
@@ -73,13 +75,14 @@ public class KnobDragWidget : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
             Set(toMinus);
             if (Mathf.Abs(m_Value + initialValue) < 0.01f)
             {
+                ResetVisuals();
                 m_Value = initialValue;
                 isSpringingBack = false;
             }
         }
     }
     
-    protected virtual void Set(float input, bool sendCallback = true)
+    public virtual void Set(float input, bool sendCallback = true)
     {
         float num = ClampValue(input);
         if (m_Value != num)
@@ -96,6 +99,11 @@ public class KnobDragWidget : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     private void UpdateVisuals()
     {
         rectTransform.transform.rotation = Quaternion.Euler(0, 0, rectTransform.eulerAngles.z - (valueToAdd * visualMultiplier));
+    }
+
+    public void ResetVisuals()
+    {
+        rectTransform.transform.rotation = Quaternion.Euler(rotationStart);
     }
 
     private float ClampValue(float input)
