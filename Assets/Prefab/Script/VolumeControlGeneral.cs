@@ -27,7 +27,6 @@ public class VolumeControlGeneral : MonoBehaviour
 
     public void AddVC(VolumeControl vc)
     {
-        Debug.Log("VC added!");
         VCs.Add(vc);
     }
 
