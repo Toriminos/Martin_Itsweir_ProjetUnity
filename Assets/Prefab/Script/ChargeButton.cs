@@ -130,6 +130,9 @@ public class ChargeButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
         if (currentTime > fillDuration)
             currentTime = fillDuration;
         isCharging = false;
+        if(maxReached && feedbackOnDropping){
+            m_OnValueReached.Invoke(false);
+        }
         maxReached = false;
     }
 }

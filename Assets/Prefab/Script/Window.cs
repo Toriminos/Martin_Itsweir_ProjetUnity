@@ -14,15 +14,14 @@ public class Window : MonoBehaviour, IDragHandler, IBeginDragHandler
         gameObject.SetActive(enableAtStart);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void SetActive(bool enabled)
     {
         gameObject.SetActive(enabled);
+    }
+
+    public void ChangeActive() //Utiliser car le menu peut appeller SetActive avec false si la fenetre a été fermez avec le close button
+    {
+        gameObject.SetActive(!gameObject.activeSelf);
     }
 
     public void OnBeginDrag(PointerEventData eventData)
