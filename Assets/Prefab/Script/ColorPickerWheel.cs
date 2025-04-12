@@ -101,22 +101,20 @@ public class ColorPickerWheel : MonoBehaviour, IPointerDownHandler, IDragHandler
             {
                 if (float.TryParse(BInput.text, out BVal))
                 {
-                    RVal /= 255f;
-                    GVal /= 255f;
-                    BVal /= 255f;
+                    float normalizedRValue = Mathf.InverseLerp(0f, 255f, RVal);
+                    float normalizedGValue = Mathf.InverseLerp(0f, 255f, GVal);
+                    float normalizedBValue = Mathf.InverseLerp(0f, 255f, BVal);
 
-                    if (RVal >= 0 && RVal <= 255 && GVal >= 0 && GVal <= 255 && BVal >= 0 && BVal <= 255)
-                    {
-                        selectedColor = new Color(RVal, GVal, BVal);
+                    selectedColor = new Color(normalizedRValue, normalizedGValue, normalizedBValue);
 
-                        Color tempColor = selectedColor;
+                    Color tempColor = selectedColor;
 
-                        tempColor.r *= brightness.value;
-                        tempColor.g *= brightness.value;
-                        tempColor.b *= brightness.value;
+                    tempColor.r *= brightness.value;
+                    tempColor.g *= brightness.value;
+                    tempColor.b *= brightness.value;
 
-                        m_OnColorSelected.Invoke(tempColor);
-                    }
+                    m_OnColorSelected.Invoke(tempColor);
+                    
                 }
             }
         }

@@ -38,7 +38,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 79.7475, y: -22.708332}
+  m_AnchoredPosition: {x: 79.7475, y: -23}
   m_SizeDelta: {x: 53.165, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1835261488878130398
@@ -408,6 +408,12 @@ MonoBehaviour:
   m_CharacterLimit: 0
   m_OnSubmit:
     m_PersistentCalls:
+      m_Calls: []
+  m_OnDidEndEdit:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnValueChanged:
+    m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 9077553392646201540}
         m_TargetAssemblyTypeName: ColorPickerWheel, Assembly-CSharp
@@ -421,12 +427,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_OnDidEndEdit:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnValueChanged:
-    m_PersistentCalls:
-      m_Calls: []
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
@@ -588,7 +588,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 132.9125, y: -22.708332}
+  m_AnchoredPosition: {x: 132.9125, y: -23}
   m_SizeDelta: {x: 53.165, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2705901377393563212
@@ -800,6 +800,12 @@ MonoBehaviour:
   m_CharacterLimit: 0
   m_OnSubmit:
     m_PersistentCalls:
+      m_Calls: []
+  m_OnDidEndEdit:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnValueChanged:
+    m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 9077553392646201540}
         m_TargetAssemblyTypeName: ColorPickerWheel, Assembly-CSharp
@@ -813,12 +819,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_OnDidEndEdit:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnValueChanged:
-    m_PersistentCalls:
-      m_Calls: []
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
@@ -958,6 +958,12 @@ MonoBehaviour:
   m_CharacterLimit: 0
   m_OnSubmit:
     m_PersistentCalls:
+      m_Calls: []
+  m_OnDidEndEdit:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnValueChanged:
+    m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 9077553392646201540}
         m_TargetAssemblyTypeName: ColorPickerWheel, Assembly-CSharp
@@ -971,12 +977,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_OnDidEndEdit:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnValueChanged:
-    m_PersistentCalls:
-      m_Calls: []
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
@@ -1118,11 +1118,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorWheelImage: {fileID: 1746571482216955163}
-  targetRenderer: {fileID: 0}
   brightness: {fileID: 5125418844562380111}
   RInput: {fileID: 8278396756776992313}
   GInput: {fileID: 6302549156334745880}
   BInput: {fileID: 5177641022004751820}
+  m_OnColorSelected:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2345291235812393483
 GameObject:
   m_ObjectHideFlags: 0
@@ -1161,7 +1163,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 26.5825, y: -22.708332}
+  m_AnchoredPosition: {x: 26.5825, y: -23}
   m_SizeDelta: {x: 53.165, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &947671408624712341
@@ -1356,7 +1358,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 80, y: -192.70833}
+  m_AnchoredPosition: {x: 80, y: -193}
   m_SizeDelta: {x: 159.495, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4180189943871566802
@@ -1551,7 +1553,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 26.582504, y: -7.708333}
+  m_AnchoredPosition: {x: 26.582504, y: -8}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4449679813721204306
@@ -1720,8 +1722,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 26.582504, y: -7.708333}
-  m_SizeDelta: {x: 10.833333, y: 0}
+  m_AnchoredPosition: {x: 26.582504, y: -8}
+  m_SizeDelta: {x: 11, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6841268552036230377
 CanvasRenderer:
@@ -2050,7 +2052,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 90, y: -117.70833}
+  m_AnchoredPosition: {x: 90, y: -118}
   m_SizeDelta: {x: 160, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7842064992610657828
@@ -2379,8 +2381,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 26.582504, y: -7.708333}
-  m_SizeDelta: {x: 9.166666, y: 0}
+  m_AnchoredPosition: {x: 26.582504, y: -8}
+  m_SizeDelta: {x: 9, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1959969357534337103
 CanvasRenderer:
