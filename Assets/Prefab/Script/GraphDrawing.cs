@@ -16,7 +16,6 @@ public class GraphDrawing : MonoBehaviour
 
     private List<GameObject> points = new List<GameObject>();
     private float timer = 0f;
-    private float angle = 0f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -35,9 +34,6 @@ public class GraphDrawing : MonoBehaviour
             timer = 0f;
             AddPoint(trackedVariable);
         }
-
-        angle += 0.05f;
-        trackedVariable = 50f + 50f * Mathf.Cos(angle % 360);
     }
 
     private void AddPoint(float value)
