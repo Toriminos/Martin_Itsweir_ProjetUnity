@@ -105,6 +105,10 @@ public class ColorPickerWheel : MonoBehaviour, IPointerDownHandler, IDragHandler
                     float normalizedGValue = Mathf.InverseLerp(0f, 255f, GVal);
                     float normalizedBValue = Mathf.InverseLerp(0f, 255f, BVal);
 
+                    RInput.text = (normalizedRValue * 255f).ToString();
+                    GInput.text = (normalizedGValue * 255f).ToString();
+                    BInput.text = (normalizedBValue * 255f).ToString();
+
                     selectedColor = new Color(normalizedRValue, normalizedGValue, normalizedBValue);
 
                     Color tempColor = selectedColor;
