@@ -6,10 +6,12 @@ public class VisibilityController : MonoBehaviour
     public GameObject boostWidget;
     public GameObject colorPicker;
     public GameObject graph;
+    public GameObject info;
     private bool wheelVisibility = false;
     private bool boostVisibility = false;
     private bool colorPickerVisibility = false;
     private bool graphVisibility = false;
+    private bool infoVisibility = false;
 
     public void ChangeWheelVisibility(){
         wheelVisibility = !wheelVisibility;
@@ -29,5 +31,10 @@ public class VisibilityController : MonoBehaviour
     public void ChangeGraphVisibility(){
         graphVisibility = !graphVisibility;
         graph.SetActive(graphVisibility);
+    }
+
+    public void ChangeInfoVisibility(){
+        infoVisibility = !infoVisibility;
+        info.SetActive(infoVisibility);
     }
 }

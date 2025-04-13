@@ -33,8 +33,8 @@ public class Window : MonoBehaviour, IDragHandler, IBeginDragHandler
             out oldLocalPos
         );
 
-        Debug.Log("Beginning of drag!");
-        Debug.Log("First local position: " + oldLocalPos);
+        //Debug.Log("Beginning of drag!");
+        //Debug.Log("First local position: " + oldLocalPos);
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -53,7 +53,7 @@ public class Window : MonoBehaviour, IDragHandler, IBeginDragHandler
         Vector3 targetPosition = rectTransform.anchoredPosition3D + new Vector3(delta.x, delta.y, 0);
         rectTransform.anchoredPosition3D = targetPosition;
 
-        Debug.Log("New local position: " + rectTransform.anchoredPosition3D);
+        //Debug.Log("New local position: " + rectTransform.anchoredPosition3D);
     }
 
 
